@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💌</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffd6ec, #d6e6ff);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.envelope {
+    width: 220px;
+    height: 150px;
+    background: #ffb6d9;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.envelope:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-top: 75px solid #ff8fc6;
+}
+
+.letter {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: white;
+    top: 10%;
+    left: 10%;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+    border-radius: 8px;
+}
+
+.open .letter {
+    opacity: 1;
+    transform: translateY(-120px);
+}
+
+.open {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+    <div class="letter">
+        <h2>Happy Birthday 🎉</h2>
+        <p>
+        I just wanted to make something small but meaningful for you.<br><br>
+        I hope this year brings you happiness, success, and moments you’ll never forget.<br><br>
+        You deserve all of it.
+        </p>
+        <p>– From someone who appreciates you 💙</p>
+    </div>
+</div>
+
+<script>
+function openLetter() {
+    document.querySelector('.envelope').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
