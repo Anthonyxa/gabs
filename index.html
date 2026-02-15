@@ -18,8 +18,9 @@ body {
 
 .container {
     position: relative;
-    width: 500px;
-    height: 350px;
+    width: 550px;
+    height: 380px;
+    perspective: 1000px;
     cursor: pointer;
 }
 
@@ -29,6 +30,7 @@ body {
     height: 100%;
 }
 
+/* Envelope base */
 .base {
     position: absolute;
     width: 100%;
@@ -36,8 +38,10 @@ body {
     background: #f5d6b4;
     border: 2px solid #c9a67a;
     box-sizing: border-box;
+    z-index: 2;
 }
 
+/* Flap */
 .flap {
     position: absolute;
     width: 100%;
@@ -49,30 +53,34 @@ body {
     transform-origin: top;
     transition: transform 0.8s ease;
     border-top: 2px solid #c9a67a;
+    z-index: 3;
 }
 
+/* Letter */
 .letter {
     position: absolute;
     width: 85%;
-    height: 80%;
+    height: 85%;
     background: white;
     left: 7.5%;
-    top: 10%;
+    bottom: 0;
     padding: 30px;
     box-sizing: border-box;
     text-align: center;
-    transform: translateY(0);
-    transition: transform 0.8s ease;
-    z-index: -1;
     border-radius: 6px;
+    transition: transform 0.8s ease;
+    z-index: 1;
 }
 
+/* OPEN STATE */
+
 .open .flap {
-    transform: rotateX(180deg);
+    transform: rotateX(-180deg);
 }
 
 .open .letter {
-    transform: translateY(-160px);
+    transform: translateY(-220px);
+    z-index: 5; /* brings letter in front */
 }
 
 h1 {
@@ -91,11 +99,11 @@ h1 {
             <h1>Happy Birthday 🎉</h1>
             <p>
                 I wanted to give you something a little different.<br><br>
-                I hope this year brings you growth, happiness,
-                and moments that feel unforgettable.<br><br>
-                You deserve a beautiful year.
+                I hope this year brings you happiness,
+                growth, and unforgettable moments.<br><br>
+                You deserve the best.
             </p>
-            <p>— From someone who truly appreciates you 💙</p>
+            <p>— From someone who appreciates you 💙</p>
         </div>
     </div>
 </div>
