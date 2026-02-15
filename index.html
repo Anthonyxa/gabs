@@ -18,7 +18,7 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-/* Container */
+/* Envelope Container */
 .container {
     position: relative;
     width: 90vw;
@@ -34,7 +34,6 @@ body {
     height: 100%;
 }
 
-/* Base */
 .base {
     position: absolute;
     width: 100%;
@@ -42,17 +41,16 @@ body {
     background: #f0d2b0;
     border: 2px solid #c8a57b;
     box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    z-index: 3;
+    z-index: 2;
 }
 
-/* Side folds */
 .left-fold, .right-fold {
     position: absolute;
     top: 0;
     width: 50%;
     height: 100%;
     background: #e8c49f;
-    z-index: 2;
+    z-index: 1;
 }
 
 .left-fold {
@@ -65,7 +63,6 @@ body {
     clip-path: polygon(100% 0, 0 50%, 100% 100%);
 }
 
-/* Flap */
 .flap {
     position: absolute;
     width: 100%;
@@ -78,7 +75,6 @@ body {
     z-index: 4;
 }
 
-/* Seal */
 .seal {
     position: absolute;
     width: 50px;
@@ -94,41 +90,51 @@ body {
     justify-content: center;
     cursor: pointer;
     color: white;
+    font-size: 18px;
 }
 
-/* Letter */
+/* Letter (hidden initially) */
 .letter {
     position: absolute;
-    width: 85%;
+    width: 100%;
+    max-width: 500px;
     background: #fffef8;
-    left: 7.5%;
-    top: 100%; /* start hidden fully below */
-    padding: 5%;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transition: top 0.8s ease;
-    z-index: 1;
-    text-align: center;
-}
-
-/* Image */
-.letter img {
-    width: 35%;
-    max-width: 130px;
+    padding: 30px;
     border-radius: 10px;
-    margin-bottom: 10px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 10;
 }
 
-/* Text */
+/* When Open */
+.open .flap {
+    transform: rotateX(-180deg);
+}
+
+.open .letter {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Content Styling */
+.letter img {
+    width: 120px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
 .to-from {
     text-align: left;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 15px;
+    margin-bottom: 15px;
     font-family: 'Dancing Script', cursive;
 }
 
 .signature {
-    margin-top: 10px;
+    margin-top: 15px;
     font-family: 'Dancing Script', cursive;
     font-size: 18px;
 }
@@ -138,21 +144,7 @@ h1 {
 }
 
 p {
-    font-size: clamp(13px, 3.5vw, 16px);
-}
-
-/* Open state */
-.open .flap {
-    transform: rotateX(-180deg);
-}
-
-.open .letter {
-    top: 10%; /* only rise slightly into view */
-    z-index: 6;
-}
-
-.open .seal {
-    opacity: 0;
+    font-size: clamp(14px, 3.5vw, 16px);
 }
 </style>
 </head>
@@ -166,26 +158,26 @@ p {
         <div class="right-fold"></div>
         <div class="flap"></div>
         <div class="seal" onclick="openLetter()">💌</div>
+    </div>
 
-        <div class="letter">
-            <div class="to-from">
-                To: Gabs <br>
-                From: Anthony
-            </div>
+    <div class="letter">
+        <div class="to-from">
+            To: Gabs <br>
+            From: Anthony
+        </div>
 
-            <img src="gabs.png" alt="Her photo">
+        <img src="gabs.png" alt="Her photo">
 
-            <h1>Happy Birthday 🎉</h1>
+        <h1>Happy Birthday 🎉</h1>
 
-            <p>
-               hii gabs, I hope you enjoy your birthday, thanks for being such an awesome person, keep being you, and I wish you the best<br><br>
-               
-            </p>
+        <p>
+            hii gabs, I hope you enjoy your birthday, thanks for being such an awesome person, keep being you, and I wish you the best<br><br>
+            
+        </p>
 
-            <div class="signature">
-                With appreciation,<br>
-                Anthony 💙
-            </div>
+        <div class="signature">
+            With appreciation,<br>
+            Anthony 💙
         </div>
     </div>
 </div>
